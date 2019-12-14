@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsChatTutorial</title>
+    <title>Eduate</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,10 +10,11 @@
   </head>
 
   <body>
+  <%= render partial: 'shared/navigation_bar' %>
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <%= render partial: 'shared/navigation_bar' %>
+          
           <div class="my-3">
             <%= yield %>
           </div>
