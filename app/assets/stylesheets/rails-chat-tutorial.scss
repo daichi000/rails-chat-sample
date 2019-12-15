@@ -62,7 +62,7 @@ body{
 .newstop{
   padding-top:20px;
   margin:20px;
-
+  
 }
 
 .newstop input{
@@ -72,4 +72,10 @@ body{
 .detail{
   float: left;
   display: flex;
+  margin-top:30px;
+}
+
+.newstop textarea{
+  width:500px;
+  height:150px;
 }

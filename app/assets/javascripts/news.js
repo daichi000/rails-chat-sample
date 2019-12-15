@@ -12,6 +12,7 @@ $(document).ready(function() {
        return location.hash = $(e.target).attr('href').substr(1);
      });
    
+
    
  // document ready  
  });

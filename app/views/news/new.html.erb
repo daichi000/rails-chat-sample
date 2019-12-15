@@ -10,8 +10,8 @@
 </head>
 
 <div class="container">
-  <h1>新規News作成</h1>
-
+  <h1>新規News作成</h1>　
+　<%=link_to('back','/news/home') %>
 
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -26,14 +26,21 @@
 
     <div class="tab-pane fade show active " id="tab1" role="tabpanel" aria-labelledby="1-tab">
       <div class="newstop">
-      <p>タイトル　　　　<input></p>
-      <div class="detail"><div>詳細文</div>　　　　　<textarea></textarea></div>
-      <div class="detail"><p>サムネイル　　  <input type="file"></p></div>
-      <div class="detail"><p>カテゴリ<select name="blood">
-        <option value="A">A型</option>
-        <option value="B">B型</option>
-        <option value="O">O型</option>
-        <option value="AB">AB型</option>
+      <p>タイトル　　　　<input class="news_title"></p>
+      <div class="newstop detail"><div>詳細文</div>　　　　　<textarea></textarea></div>
+      <div class="newstop detail"><p>サムネイル　　  <input type="file"></p></div>
+      <div class="newstop detail"><p>カテゴリ<select name="blood">
+        <option value="">特集</option>
+        <option value="">学校経営</option>
+        <option value="">小学校</option>
+        <option value="">中学校</option>
+        <option value="">高校</option>
+        <option value="">教育ICT</option>
+        <option value="">国内</option>
+        <option value="">海外</option>
+        <option value="">地域</option>
+        <option value="">カルチャー</option>
+
         </select></p></div>
       </div>
     </div>
@@ -41,12 +48,22 @@
 
     <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="2-tab">
     <div id="summernote"></div>
+
+    <div style="margin-top: 30px; float: right">
+    <input type="submit" value="作成" style="background-color: green; color: white" class="news_create" id="news_create"/>
+    </div>
+
     <script>
       $('#summernote').summernote({
         placeholder: 'Hello bootstrap 4',
         tabsize: 2,
         height: 100
       });
+
+      $('.news_create').click(function() {
+        console.log($('#summernote'));
+        console.log($('.news_title').val());
+      })
     </script>
       
     </div>
