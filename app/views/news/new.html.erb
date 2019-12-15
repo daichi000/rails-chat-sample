@@ -27,8 +27,8 @@
     <div class="tab-pane fade show active " id="tab1" role="tabpanel" aria-labelledby="1-tab">
       <div class="newstop">
       <p>タイトル　　　　<input class="news_title"></p>
-      <div class="detail"><div>詳細文</div>　　　　　<textarea></textarea></div>
-      <div class="detail"><p>サムネイル　　  <input type="file"></p></div>
+      <div class="detail"><div>詳細文</div>　　　　　<textarea id="detail"></textarea></div>
+      <div class="samnail"><p>サムネイル　　  <input type="file"></p></div>
       </div>
     </div>
 
@@ -48,8 +48,9 @@
       });
 
       $('.news_create').click(function() {
-        console.log($('#summernote'));
+        console.log($('#summernote').summernote('code'));
         console.log($('.news_title').val());
+        console.log($('#detail').val());
       })
     </script>
       
