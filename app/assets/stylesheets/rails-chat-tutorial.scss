@@ -78,4 +78,25 @@ body{
 .newstop textarea{
   width:500px;
   height:150px;
+  
+}
+
+.square{
+  width:1000px;
+  height:250px;
+  background-color:#ddd;
+  display:block;
+}
+
+.btn {
+  &.questionCreate{
+    background-color:#daa520;
+    float:right;
+    margin-right:20px;
+    color:white;
+  }
+}
+
+.header{
+  background-color:#800000;
 }

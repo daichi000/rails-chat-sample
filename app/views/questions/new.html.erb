@@ -1,4 +1,8 @@
-<h3>あなたの"今知りたい！"を教えてください！</h3>
-<%=link_to('homeback','/')%>
-<%= link_to 'question一覧', questions_path %>
-<%= render 'form', question: @question %>
+
+<div class="square">
+    <h3>あなたの"今知りたい！"を教えてください！</h3>
+    <%=link_to('homeback','/')%>
+    <%= link_to 'question一覧', questions_path %>
+   
+    <%= render 'form', question: @question %>
+</div>
