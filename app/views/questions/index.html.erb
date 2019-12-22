@@ -16,9 +16,9 @@
       <tr>
         <td><%= question.title %></td>
         <td><%= question.body %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細を見る', question %></td>
+        <td><%= link_to '編集する', edit_question_path(question) %></td>
+        <td><%= link_to '削除する', question, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>
