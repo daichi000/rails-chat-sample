@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
  
+  resources :articles
   resources :questions
   get 'questions/new',to:'quesitons#new'
   devise_for :users
