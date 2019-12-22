@@ -7,8 +7,22 @@
     <%= f.association :user %>
     <%= f.input :title %>
     <%= f.input :detail %>
-    <%= f.input :image %>
-    <%= f.input :category %>
+    <%= f.file_field :image %>
+    <div>Category</div>
+    <%= f.select :category,
+      options_for_select([
+        ['特集', '特集'],
+        ['学校経営', '学校経営'],
+        ['小学校', '小学校'],
+        ['中学校', '中学校'],
+        ['高校', '高校'],
+        ['教育ICT', '教育ICT'],
+        ['国内', '国内'],
+        ['海外', '海外'],
+        ['地域', '地域'],
+        ['カルチャー', 'カルチャー'],
+      ])
+    %>
     <%= f.input :body %>
   </div>
 
