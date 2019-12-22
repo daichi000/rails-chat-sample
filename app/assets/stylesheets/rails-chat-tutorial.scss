@@ -5,6 +5,10 @@
   vertical-align:middle;
 }
 
+#myTab {
+  margin-bottom: 20px;
+}
+
 .room-nav-link {
   border: 1px solid lighten($primary, 40%);
   background: lighten($primary, 45%);
@@ -60,9 +64,8 @@ body{
 }
 
 .newstop{
-  padding-top:20px;
-  margin:20px;
-
+  // margin:20px;
+  
 }
 
 .newstop input{
@@ -72,4 +75,13 @@ body{
 .detail{
   float: left;
   display: flex;
+}
+
+.newstop textarea{
+  width:500px;
+  height:150px;
+}
+
+.preview {
+  margin-bottom: 10px;
 }

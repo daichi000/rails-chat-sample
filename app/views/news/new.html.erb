@@ -2,16 +2,15 @@
   <meta charset="utf-8">
   <script src="news.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 </head>
 
 <div class="container">
-  <h1>新規News作成</h1>
-
+  <h1>新規News作成</h1>　
+　<%=link_to('back','/news/home') %>
 
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -26,9 +25,23 @@
 
     <div class="tab-pane fade show active " id="tab1" role="tabpanel" aria-labelledby="1-tab">
       <div class="newstop">
-      <p>タイトル　　　　<input class="news_title"></p>
-      <div class="detail"><div>詳細文</div>　　　　　<textarea id="detail"></textarea></div>
-      <div class="samnail"><p>サムネイル　　  <input type="file"></p></div>
+      <div class="newstop detail"><p>タイトル　　　　<input class="news_title"></p></div>
+      <div class="newstop detail"><p>詳細文　　　　<textarea id="detail"></textarea></p></div>
+      <div class="newstop detail"><p>サムネイル　　  <input type="file"></p></div>
+      <div class="preview"></div>
+      <div class="newstop detail"><p>カテゴリ<select name="category">
+        <option value="">特集</option>
+        <option value="">学校経営</option>
+        <option value="">小学校</option>
+        <option value="">中学校</option>
+        <option value="">高校</option>
+        <option value="">教育ICT</option>
+        <option value="">国内</option>
+        <option value="">海外</option>
+        <option value="">地域</option>
+        <option value="">カルチャー</option>
+
+        </select></p></div>
       </div>
     </div>
 
@@ -42,16 +55,78 @@
 
     <script>
       $('#summernote').summernote({
-        placeholder: 'Hello bootstrap 4',
+        placeholder: '本文を書き込む',
         tabsize: 2,
         height: 100
       });
 
       $('.news_create').click(function() {
+        Console();
+        Create($('.news_title').val(), $('#detail').val(), $('[name=category] option:selected').text(), $('#summernote').summernote('code'), function() {}, function() {})
+      })
+
+      $('input[type="file"]').change(function(e) {
+        console.log('jiji');
+        var file = e.target.files[0],
+        reader = new FileReader(),
+        $preview = $(".preview");
+        t = this;
+
+        if(file.type.indexOf("image") < 0){
+          return false;
+        }
+
+        reader.onload = (function(file) {
+          return function(e) {
+            $preview.empty();
+            $preview.append($('<img>').attr({
+                src: e.target.result,
+                width: "150px",
+                class: "preview",
+                title: file.name
+            }));
+          };
+        })(file);
+
+        reader.readAsDataURL(file);
+      });
+
+      function Console() {
         console.log($('#summernote').summernote('code'));
         console.log($('.news_title').val());
         console.log($('#detail').val());
-      })
+        var txt = $('[name=category] option:selected').text();
+        console.log(txt);
+      }
+
+      function Create(title, detail, category, summernote, success, error) {
+        var formData = {};
+        formData['title'] = title;
+        formData['detail'] = detail;
+        formData['category'] = category;
+        formData['summernote'] = summernote;
+        console.log(formData);
+        $.ajax({
+          url: "/articles/create",
+          type: "POST",
+          data: formData,
+          processData: false,
+          contentType: false,
+          xhrFields: { withCredentials: true },
+        }).done(function( res ) {
+          switch(res['status']) {
+            case 'success':
+              success(res);
+              break;
+            case 'error':
+              console.log('err', 'hi');
+              error(res['message']);
+              break;
+          }
+        }).fail(function( jqXHR, textStatus, errorThrown ) {
+          error('js.error.check_network');
+        });
+      }
     </script>
       
     </div>

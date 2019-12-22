@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'websocket-rails', github: 'moaa/websocket-rails', branch: 'sync_fixes'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -64,4 +65,4 @@ gem 'devise'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'simple_form'
-gem 'redis'
+gem 'redis', '3.2.0'
