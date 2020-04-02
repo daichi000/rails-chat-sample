@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post 'articles/create',to: 'articles#create'
   
   
-  root controller: :news, action: :new
+  root controller: :news, action: :home
   
   resources :room_messages
   resources :rooms
